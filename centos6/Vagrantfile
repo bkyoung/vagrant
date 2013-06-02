@@ -1,0 +1,14 @@
+Vagrant.configure("2") do |config|
+  config.vm.box       = "centos-6.4-x86_64"
+  config.vm.box_url   = "https://dl.dropboxusercontent.com/u/11604562/centos-6.4-x86_64.box"
+  config.vm.hostname = "centos6-vm"
+  #config.vm.forward_port 80, 8080
+  config.vm.provider "virtualbox" do |v|
+    #v.gui  = true
+    v.name = "centos6-vm"
+  end
+
+  config.vm.synced_folder "puppet/", "/puppet"
+
+  config.vm.provision :shell, :path => "centos_6_x.sh"
+end
