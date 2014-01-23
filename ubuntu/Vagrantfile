@@ -1,0 +1,12 @@
+Vagrant.configure("2") do |config|
+  config.vm.box       = "ubuntu-13.10-amd64"
+  config.vm.box_url   = "https://www.dropbox.com/sh/dtgjde7mahmcqp8/nrqw9fSBiL/ubuntu-13.10-amd64.box"
+  config.vm.hostname  = "ubuntu-server"
+  #config.vm.network :forwarded_port, guest: 80, host: 8080
+  config.vm.provider "virtualbox" do |v|
+    #v.gui  = true
+    v.name = "ubuntu-server"
+  end
+
+  config.vm.synced_folder "puppet/", "/puppet", disabled: true
+end
